@@ -3,13 +3,13 @@ package org.example.appiumandroidproject.tests;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.options.BaseOptions;
 import io.appium.java_client.screenrecording.CanRecordScreen;
-import org.example.appiumandroidproject.AllureLogger;
 import org.example.appiumandroidproject.Helper;
 import org.example.appiumandroidproject.pages.IntroScreen;
+import org.example.appiumandroidproject.pages.NoteScreen;
+import org.example.appiumandroidproject.pages.SearchScreen;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.ScreenOrientation;
-import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,6 +60,14 @@ public class BaseTest {
 
     public IntroScreen getIntroScreen() throws MalformedURLException {
         return new IntroScreen(getDriver());
+    }
+
+    public NoteScreen getNoteScreen() throws MalformedURLException {
+        return new NoteScreen(getDriver());
+    }
+
+    public SearchScreen getSearchScreen() throws MalformedURLException {
+        return new SearchScreen(getDriver());
     }
 
     private static void setOrientation() throws MalformedURLException {
