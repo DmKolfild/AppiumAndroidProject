@@ -2,7 +2,6 @@ package org.example.appiumandroidproject.tests;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.options.BaseOptions;
-import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.example.appiumandroidproject.Helper;
 import org.example.appiumandroidproject.pages.IntroScreen;
 import org.example.appiumandroidproject.pages.NoteScreen;
@@ -20,9 +19,7 @@ import java.util.Objects;
 
 public class BaseTest {
     private static AndroidDriver driver;
-    // Запуск тестов с заданной ориентацией экрана: mvn clean test -Dorientation=landscape
     private static final String ORIENTATION = System.getProperty("orientation");
-    // Запуск тестов с wifi: mvn clean test -Dwifi=enabled
     private static final String WIFI = System.getProperty("wifi");
 
     @BeforeEach
@@ -31,7 +28,7 @@ public class BaseTest {
         setOrientation();
         setWiFi();
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        ((CanRecordScreen) getDriver()).startRecordingScreen();
+        getDriver().startRecordingScreen();
     }
 
     public static AndroidDriver getDriver() throws MalformedURLException {
@@ -94,7 +91,7 @@ public class BaseTest {
     @AfterEach
     public void tearDown() throws MalformedURLException {
         returnWiFiToOriginalState();
-        ((CanRecordScreen) getDriver()).stopRecordingScreen();
+        getDriver().stopRecordingScreen();
         getDriver().quit();
     }
 }
